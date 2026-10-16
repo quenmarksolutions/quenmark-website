@@ -1,0 +1,350 @@
+/* ============================================================
+   animations.css — Keyframes & Micro-Animations
+   Company Website | StartUp Project
+   ============================================================ */
+
+
+/* ============================================================
+   KEYFRAME DEFINITIONS
+   ============================================================ */
+
+/* Fade in upward */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Fade in downward */
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Fade in from left */
+@keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Fade in from right */
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Simple fade in */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* Scale in */
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.92);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Float (gentle bob for hero image) */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-12px); }
+}
+
+/* Pulse glow (for badges or accent elements) */
+@keyframes pulseGlow {
+  0%, 100% { box-shadow: 0 0 0px 0 rgba(245, 166, 35, 0); }
+  50%       { box-shadow: 0 0 18px 4px rgba(245, 166, 35, 0.25); }
+}
+
+/* Shimmer (loading skeleton or decorative) */
+@keyframes shimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+/* Spin (loading spinner) */
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Counter count-up handled by JS, but this is the entry animation */
+@keyframes countUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Slide in from top (announcement bar) */
+@keyframes slideDown {
+  from {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Marquee (partner logos strip if used) */
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+/* Orbit dot (decorative) */
+@keyframes orbit {
+  from { transform: rotate(0deg) translateX(30px) rotate(0deg); }
+  to   { transform: rotate(360deg) translateX(30px) rotate(-360deg); }
+}
+
+
+/* ============================================================
+   HERO SECTION ANIMATIONS
+   Applied directly on hero elements for page-load sequence
+   ============================================================ */
+
+.hero-animate-1 {
+  animation: fadeInUp 0.7s ease both;
+  animation-delay: 0.1s;
+}
+
+.hero-animate-2 {
+  animation: fadeInUp 0.7s ease both;
+  animation-delay: 0.25s;
+}
+
+.hero-animate-3 {
+  animation: fadeInUp 0.7s ease both;
+  animation-delay: 0.4s;
+}
+
+.hero-animate-4 {
+  animation: fadeInUp 0.7s ease both;
+  animation-delay: 0.55s;
+}
+
+.hero-image-animate {
+  animation: fadeInRight 0.9s ease both;
+  animation-delay: 0.3s;
+}
+
+/* Floating hero image */
+.hero-image-float {
+  animation: float 5s ease-in-out infinite;
+}
+
+/* Announcement bar entry */
+.announcement-bar {
+  animation: slideDown 0.5s ease both;
+}
+
+
+/* ============================================================
+   FLOATING BACKGROUND BLOBS (decorative, hero background)
+   ============================================================ */
+
+.blob {
+  position: absolute;
+  border-radius: var(--radius-full);
+  filter: blur(80px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.blob-1 {
+  width: 500px;
+  height: 500px;
+  background: rgba(245, 166, 35, 0.07);
+  top: -150px;
+  right: -100px;
+  animation: float 8s ease-in-out infinite;
+}
+
+.blob-2 {
+  width: 350px;
+  height: 350px;
+  background: rgba(245, 166, 35, 0.04);
+  bottom: 50px;
+  left: -80px;
+  animation: float 10s ease-in-out infinite;
+  animation-delay: -3s;
+}
+
+
+/* ============================================================
+   SCROLL REVEAL — STAGGER VARIANTS
+   The .reveal base class is in global.css.
+   These just add variant delays for stagger effects.
+   ============================================================ */
+
+.stagger-children > * {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.55s ease, transform 0.55s ease;
+}
+
+.stagger-children.visible > *:nth-child(1) { opacity: 1; transform: none; transition-delay: 0.05s; }
+.stagger-children.visible > *:nth-child(2) { opacity: 1; transform: none; transition-delay: 0.15s; }
+.stagger-children.visible > *:nth-child(3) { opacity: 1; transform: none; transition-delay: 0.25s; }
+.stagger-children.visible > *:nth-child(4) { opacity: 1; transform: none; transition-delay: 0.35s; }
+.stagger-children.visible > *:nth-child(5) { opacity: 1; transform: none; transition-delay: 0.45s; }
+.stagger-children.visible > *:nth-child(6) { opacity: 1; transform: none; transition-delay: 0.55s; }
+
+
+/* ============================================================
+   INTERACTIVE MICRO-ANIMATIONS
+   ============================================================ */
+
+/* Ripple effect on buttons */
+.btn {
+  overflow: hidden;
+}
+
+.btn::after {
+  content: '';
+  position: absolute;
+  inset: 50%;
+  width: 0;
+  height: 0;
+  background: rgba(255,255,255,0.15);
+  border-radius: var(--radius-full);
+  transition: width 0.5s ease, height 0.5s ease, inset 0.5s ease, opacity 0.4s ease;
+  opacity: 0;
+}
+
+.btn:active::after {
+  width: 200%;
+  height: 200%;
+  inset: -50%;
+  opacity: 0;
+}
+
+/* Orange underline draw on hover (for nav links) */
+/* Already handled in components.css via ::after */
+
+/* Card icon pop */
+.service-card__icon {
+  transition: transform var(--transition-bounce), background var(--transition-base);
+}
+
+.service-card:hover .service-card__icon {
+  transform: scale(1.12) rotate(-5deg);
+  background: rgba(245, 166, 35, 0.25);
+}
+
+/* Stats counter entry */
+.stat-item__number {
+  animation: countUp 0.6s ease both;
+}
+
+
+/* ============================================================
+   LOADING SPINNER (contact form submit)
+   ============================================================ */
+
+.spinner {
+  width: 18px;
+  height: 18px;
+  border: 2px solid rgba(0,0,0,0.2);
+  border-top-color: #000;
+  border-radius: var(--radius-full);
+  animation: spin 0.7s linear infinite;
+  display: none;
+}
+
+.btn.loading .spinner {
+  display: inline-block;
+}
+
+.btn.loading .btn-text {
+  display: none;
+}
+
+
+/* ============================================================
+   GRADIENT BORDER EFFECT (featured pricing card glow)
+   ============================================================ */
+
+.pricing-card.featured {
+  position: relative;
+}
+
+.pricing-card.featured::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: calc(var(--radius-xl) + 1px);
+  background: linear-gradient(135deg, var(--color-primary), transparent 50%, var(--color-primary));
+  z-index: -1;
+  animation: pulseGlow 3s ease-in-out infinite;
+}
+
+
+/* ============================================================
+   PAGE TRANSITION (between pages)
+   Add class 'page-exit' to body before navigating
+   ============================================================ */
+
+body {
+  animation: fadeIn 0.4s ease both;
+}
+
+.page-exit {
+  animation: fadeIn 0.3s ease reverse forwards;
+}
+
+
+/* ============================================================
+   MARQUEE STRIP (partner logos — optional)
+   ============================================================ */
+
+.marquee-wrapper {
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.marquee-track {
+  display: inline-flex;
+  gap: var(--space-12);
+  animation: marquee 20s linear infinite;
+}
+
+.marquee-wrapper:hover .marquee-track {
+  animation-play-state: paused;
+}

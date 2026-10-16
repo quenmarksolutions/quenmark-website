@@ -1,0 +1,468 @@
+/* ============================================================
+   global.css — Design Tokens, Reset & Layout Utilities
+   Quenmark Solutions | Company Website
+   ============================================================
+   HOW TO CUSTOMIZE:
+   - Change accent color: edit --color-primary below
+   - Change fonts: edit --font-heading and --font-body below
+   - All spacing, radii, and shadows are defined here
+   ============================================================ */
+
+/* ============================================================
+   GOOGLE FONTS IMPORT
+   Fonts: Outfit (headings) + Inter (body text)
+   ============================================================ */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800;900&display=swap');
+
+/* ============================================================
+   CSS CUSTOM PROPERTIES (Design Tokens)
+   Edit values here to retheme the entire site at once
+   ============================================================ */
+:root {
+
+  /* ----------------------------------------------------------
+     COLORS — DARK MODE (default)
+     COMPANY ACCENT COLOR: Change --color-primary to rebrand
+     ---------------------------------------------------------- */
+  --color-primary:        #F5A623;   /* Orange accent — main CTA color          */
+  --color-primary-dark:   #D4891A;   /* Darker orange — hover states             */
+  --color-primary-glow:   rgba(245, 166, 35, 0.15); /* Glow for cards/buttons   */
+
+  --color-bg:             #0A0A0A;   /* Page background (near-black)             */
+  --color-surface:        #111111;   /* Card / section surface                   */
+  --color-surface-2:      #1A1A1A;   /* Elevated card, input backgrounds         */
+  --color-surface-3:      #242424;   /* Deeply elevated, tooltip bg              */
+
+  --color-text:           #F0F0F0;   /* Primary text                             */
+  --color-text-muted:     #888888;   /* Secondary / caption text                 */
+  --color-text-faint:     #555555;   /* Very subtle text, placeholders           */
+
+  --color-border:         #222222;   /* Subtle borders                           */
+  --color-border-light:   #2E2E2E;   /* Slightly more visible border             */
+
+  --color-white:          #FFFFFF;
+  --color-black:          #000000;
+
+  /* Theme-aware utility (used in some components) */
+  --color-page-bg:        var(--color-bg);
+
+  --color-success:        #22C55E;   /* Green for success states                 */
+  --color-error:          #EF4444;   /* Red for error/validation messages        */
+  --color-warning:        #EAB308;   /* Yellow for warnings                      */
+
+  /* ----------------------------------------------------------
+     TYPOGRAPHY
+     COMPANY FONT: Change --font-heading to switch heading font
+     ---------------------------------------------------------- */
+  --font-heading:   'Outfit', sans-serif;
+  --font-body:      'Inter', sans-serif;
+
+  /* Font size scale (clamp for fluid responsive sizing) */
+  --text-xs:    clamp(0.65rem, 1vw, 0.75rem);
+  --text-sm:    clamp(0.8rem, 1.5vw, 0.875rem);
+  --text-base:  clamp(0.9rem, 2vw, 1rem);
+  --text-md:    clamp(1rem, 2vw, 1.125rem);
+  --text-lg:    clamp(1.1rem, 2.5vw, 1.25rem);
+  --text-xl:    clamp(1.25rem, 3vw, 1.5rem);
+  --text-2xl:   clamp(1.5rem, 3.5vw, 2rem);
+  --text-3xl:   clamp(2rem, 4vw, 2.5rem);
+  --text-4xl:   clamp(2.5rem, 5vw, 3.5rem);
+  --text-5xl:   clamp(3rem, 6vw, 4.5rem);
+
+  /* Font weights */
+  --weight-light:    300;
+  --weight-regular:  400;
+  --weight-medium:   500;
+  --weight-semibold: 600;
+  --weight-bold:     700;
+  --weight-black:    900;
+
+  /* Line heights */
+  --leading-tight:  1.2;
+  --leading-snug:   1.35;
+  --leading-normal: 1.6;
+  --leading-loose:  1.8;
+
+  /* ----------------------------------------------------------
+     SPACING SCALE
+     ---------------------------------------------------------- */
+  --space-1:   0.25rem;   /*  4px */
+  --space-2:   0.5rem;    /*  8px */
+  --space-3:   0.75rem;   /* 12px */
+  --space-4:   1rem;      /* 16px */
+  --space-5:   1.25rem;   /* 20px */
+  --space-6:   1.5rem;    /* 24px */
+  --space-8:   2rem;      /* 32px */
+  --space-10:  2.5rem;    /* 40px */
+  --space-12:  3rem;      /* 48px */
+  --space-16:  4rem;      /* 64px */
+  --space-20:  5rem;      /* 80px */
+  --space-24:  6rem;      /* 96px */
+  --space-32:  8rem;      /* 128px */
+
+  /* ----------------------------------------------------------
+     BORDER RADIUS
+     ---------------------------------------------------------- */
+  --radius-sm:   4px;
+  --radius-md:   8px;
+  --radius-lg:   12px;
+  --radius-xl:   20px;
+  --radius-2xl:  28px;
+  --radius-full: 9999px;
+
+  /* ----------------------------------------------------------
+     SHADOWS
+     ---------------------------------------------------------- */
+  --shadow-sm:     0 1px 3px rgba(0,0,0,0.4);
+  --shadow-md:     0 4px 12px rgba(0,0,0,0.5);
+  --shadow-lg:     0 8px 30px rgba(0,0,0,0.6);
+  --shadow-xl:     0 16px 50px rgba(0,0,0,0.7);
+  --shadow-glow:   0 0 30px rgba(245, 166, 35, 0.2);
+  --shadow-glow-sm:0 0 12px rgba(245, 166, 35, 0.15);
+
+  /* ----------------------------------------------------------
+     TRANSITIONS
+     ---------------------------------------------------------- */
+  --transition-fast:   150ms ease;
+  --transition-base:   250ms ease;
+  --transition-slow:   400ms ease;
+  --transition-bounce: 300ms cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  /* ----------------------------------------------------------
+     LAYOUT
+     ---------------------------------------------------------- */
+  --container-max: 1200px;
+  --container-sm:  720px;
+  --navbar-height: 70px;
+
+  /* ----------------------------------------------------------
+     Z-INDEX SCALE
+     ---------------------------------------------------------- */
+  --z-base:    1;
+  --z-above:   10;
+  --z-modal:   100;
+  --z-navbar:  1000;
+  --z-tooltip: 2000;
+}
+
+/* ============================================================
+   LIGHT THEME OVERRIDES
+   Applied when <html data-theme="light"> is set by theme toggle JS
+   ============================================================ */
+[data-theme="light"] {
+  --color-primary:        #E8960F;   /* Slightly deeper orange for light bg legibility */
+  --color-primary-dark:   #C47D0A;
+  --color-primary-glow:   rgba(232, 150, 15, 0.12);
+
+  --color-bg:             #F5F5F0;   /* Warm off-white page background */
+  --color-surface:        #FFFFFF;   /* Card / section surface */
+  --color-surface-2:      #F0EDE8;   /* Elevated card, input backgrounds */
+  --color-surface-3:      #E5E1DA;   /* Deeply elevated, tooltip bg */
+
+  --color-text:           #111111;   /* Primary text */
+  --color-text-muted:     #555555;   /* Secondary / caption text */
+  --color-text-faint:     #999999;   /* Very subtle text, placeholders */
+
+  --color-border:         #DEDBD6;   /* Subtle borders */
+  --color-border-light:   #CCCAC5;   /* Slightly more visible border */
+
+  --shadow-sm:     0 1px 3px rgba(0,0,0,0.08);
+  --shadow-md:     0 4px 12px rgba(0,0,0,0.1);
+  --shadow-lg:     0 8px 30px rgba(0,0,0,0.12);
+  --shadow-xl:     0 16px 50px rgba(0,0,0,0.15);
+  --shadow-glow:   0 0 30px rgba(232, 150, 15, 0.18);
+  --shadow-glow-sm:0 0 12px rgba(232, 150, 15, 0.12);
+}
+
+/* Smooth transition when switching themes */
+body,
+body *:not(.no-transition) {
+  transition-property: background-color, border-color, color, box-shadow;
+  transition-duration: 200ms;
+  transition-timing-function: ease;
+}
+
+/* ============================================================
+   CSS RESET & BASE STYLES
+   ============================================================ */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  font-weight: var(--weight-regular);
+  line-height: var(--leading-normal);
+  color: var(--color-text);
+  background-color: var(--color-bg);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: color var(--transition-base);
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+button {
+  cursor: pointer;
+  font-family: inherit;
+  border: none;
+  background: none;
+}
+
+input,
+textarea,
+select {
+  font-family: inherit;
+  font-size: inherit;
+}
+
+/* ============================================================
+   TYPOGRAPHY UTILITY CLASSES
+   ============================================================ */
+.font-heading { font-family: var(--font-heading); }
+.font-body    { font-family: var(--font-body); }
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  font-weight: var(--weight-bold);
+  line-height: var(--leading-tight);
+  color: var(--color-text);
+}
+
+h1 { font-size: var(--text-5xl); }
+h2 { font-size: var(--text-4xl); }
+h3 { font-size: var(--text-2xl); }
+h4 { font-size: var(--text-xl); }
+h5 { font-size: var(--text-lg); }
+h6 { font-size: var(--text-md); }
+
+p {
+  color: var(--color-text-muted);
+  line-height: var(--leading-loose);
+}
+
+.text-primary    { color: var(--color-primary); }
+.text-muted      { color: var(--color-text-muted); }
+.text-faint      { color: var(--color-text-faint); }
+.text-white      { color: var(--color-white); }
+.text-center     { text-align: center; }
+.text-left       { text-align: left; }
+.text-right      { text-align: right; }
+
+.text-xs   { font-size: var(--text-xs); }
+.text-sm   { font-size: var(--text-sm); }
+.text-base { font-size: var(--text-base); }
+.text-lg   { font-size: var(--text-lg); }
+.text-xl   { font-size: var(--text-xl); }
+.text-2xl  { font-size: var(--text-2xl); }
+.text-3xl  { font-size: var(--text-3xl); }
+
+.font-medium   { font-weight: var(--weight-medium); }
+.font-semibold { font-weight: var(--weight-semibold); }
+.font-bold     { font-weight: var(--weight-bold); }
+
+/* ============================================================
+   LAYOUT UTILITIES
+   ============================================================ */
+.container {
+  width: 100%;
+  max-width: var(--container-max);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--space-6);
+  padding-right: var(--space-6);
+}
+
+.container-sm {
+  max-width: var(--container-sm);
+}
+
+/* Section spacing */
+.section {
+  padding-top: var(--space-24);
+  padding-bottom: var(--space-24);
+}
+
+.section-sm {
+  padding-top: var(--space-16);
+  padding-bottom: var(--space-16);
+}
+
+/* Flex utilities */
+.flex         { display: flex; }
+.flex-col     { flex-direction: column; }
+.flex-wrap    { flex-wrap: wrap; }
+.items-center { align-items: center; }
+.items-start  { align-items: flex-start; }
+.justify-center  { justify-content: center; }
+.justify-between { justify-content: space-between; }
+.justify-end     { justify-content: flex-end; }
+.gap-2  { gap: var(--space-2); }
+.gap-4  { gap: var(--space-4); }
+.gap-6  { gap: var(--space-6); }
+.gap-8  { gap: var(--space-8); }
+.gap-12 { gap: var(--space-12); }
+.gap-16 { gap: var(--space-16); }
+.gap-20 { gap: var(--space-20); }
+.gap-24 { gap: var(--space-24); }
+
+/* Grid utilities */
+.grid          { display: grid; }
+.grid-2        { grid-template-columns: repeat(2, 1fr); }
+.grid-3        { grid-template-columns: repeat(3, 1fr); }
+.grid-4        { grid-template-columns: repeat(4, 1fr); }
+.grid-auto     { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
+
+/* Spacing utilities */
+.mt-4  { margin-top: var(--space-4); }
+.mt-6  { margin-top: var(--space-6); }
+.mt-8  { margin-top: var(--space-8); }
+.mb-4  { margin-bottom: var(--space-4); }
+.mb-6  { margin-bottom: var(--space-6); }
+.mb-8  { margin-bottom: var(--space-8); }
+
+/* ============================================================
+   BACKGROUND & SURFACE UTILITIES
+   ============================================================ */
+.bg-surface   { background-color: var(--color-surface); }
+.bg-surface-2 { background-color: var(--color-surface-2); }
+.bg-primary   { background-color: var(--color-primary); }
+
+/* Gradient text effect */
+.gradient-text {
+  background: linear-gradient(135deg, var(--color-primary), #FFD580);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Section label (small orange text above headings) */
+.section-label {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--text-xs);
+  font-weight: var(--weight-semibold);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-primary);
+  margin-bottom: var(--space-4);
+}
+
+.section-label::before {
+  content: '';
+  width: 20px;
+  height: 2px;
+  background: var(--color-primary);
+  border-radius: var(--radius-full);
+}
+
+/* Divider */
+.divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--color-border), transparent);
+  margin: var(--space-16) 0;
+}
+
+/* ============================================================
+   SCROLL REVEAL BASE STATE
+   (Animation classes — visible state set in animations.css)
+   ============================================================ */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-left {
+  opacity: 0;
+  transform: translateX(-40px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.reveal-left.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.reveal-right {
+  opacity: 0;
+  transform: translateX(40px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.reveal-right.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Stagger delay helpers */
+.delay-1 { transition-delay: 0.1s; }
+.delay-2 { transition-delay: 0.2s; }
+.delay-3 { transition-delay: 0.3s; }
+.delay-4 { transition-delay: 0.4s; }
+.delay-5 { transition-delay: 0.5s; }
+
+/* ============================================================
+   RESPONSIVE — MOBILE OVERRIDES
+   ============================================================ */
+@media (max-width: 1024px) {
+  .grid-4 { grid-template-columns: repeat(2, 1fr); }
+  .grid-3 { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 640px) {
+  :root {
+    --navbar-height: 60px;
+  }
+
+  .section {
+    padding-top: var(--space-16);
+    padding-bottom: var(--space-16);
+  }
+
+  .grid-4,
+  .grid-3,
+  .grid-2 {
+    grid-template-columns: 1fr;
+  }
+
+  .container {
+    padding-left: var(--space-4);
+    padding-right: var(--space-4);
+  }
+
+  h1 { font-size: clamp(2rem, 8vw, 3rem); }
+  h2 { font-size: clamp(1.75rem, 6vw, 2.5rem); }
+}

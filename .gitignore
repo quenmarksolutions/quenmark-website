@@ -1,0 +1,13 @@
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs / Temp
+*.log
+*.tmp
+
+# Temporary files / scratch
+fix_colors.py
+websites.txt
+Untitled.jpg
+Screenshot*.png
