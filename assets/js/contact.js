@@ -99,6 +99,18 @@
 
     if (!isValid) return;
 
+    // Generate unique subject line per submission to prevent Gmail/email clients
+    // from grouping multiple leads into one conversation thread
+    const nameInput = document.getElementById('contact-name');
+    const senderName = (nameInput && nameInput.value.trim()) ? nameInput.value.trim() : 'New Lead';
+    const refCode = Math.floor(1000 + Math.random() * 9000);
+    const dynamicSubject = 'New Lead: ' + senderName + ' [#QM-' + refCode + ']';
+
+    const subjectInput = form.querySelector('input[name="_subject"]');
+    if (subjectInput) {
+      subjectInput.value = dynamicSubject;
+    }
+
     // If running locally from hard drive, use native form submission to avoid CORS issues
     if (window.location.protocol === 'file:') {
       submitBtn.classList.add('loading');
@@ -112,6 +124,7 @@
     submitBtn.disabled = true;
 
     const formData = new FormData(form);
+    formData.set('_subject', dynamicSubject);
 
     fetch('https://formsubmit.co/ajax/quenmarksolutions@gmail.com', {
       method: 'POST',
